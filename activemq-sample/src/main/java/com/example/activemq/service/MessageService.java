@@ -34,7 +34,7 @@ public class MessageService {
    *
    * @param messageDto 구독한 메시지를 담고 있는 MessageDto 객체
    */
-  @JmsListener(destination = "${activemq.queue.name}")
+  @JmsListener(destination = "${activemq.queue.name}") // 라이브러리에서 지원해주는 Annotation
   public void reciveMessage(MessageDto messageDto) {
     log.info("Received message: {}", messageDto.toString());
   }

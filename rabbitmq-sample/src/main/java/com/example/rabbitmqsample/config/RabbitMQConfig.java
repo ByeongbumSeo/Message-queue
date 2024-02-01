@@ -46,10 +46,10 @@ public class RabbitMQConfig {
   @Bean
   public Queue queue() {
     return new Queue(queueName);
-  }
+  } // org.springframework.amqp.core.Queue
 
   /**
-   * 지정된 익스체인지 이름으로 DirectExchange 빈을 생성
+   * 지정된 Exchange 이름으로 DirectExchange 빈을 생성
    *
    * @return TopicExchange 빈 객체
    */
@@ -59,7 +59,8 @@ public class RabbitMQConfig {
   }
 
   /**
-   * 주어진 큐와 익스체인지를 바인딩하고 라우팅 키를 사용하여 Binding 빈을 생성
+   * 주어진 Queue 와 Exchange 을 Binding 하고 Routing Key 을 이용하여 Binding Bean 생성
+   * Exchange 에 Queue 을 등록한다고 이해
    *
    * @param queue    바인딩할 Queue
    * @param exchange 바인딩할 TopicExchange
@@ -87,6 +88,8 @@ public class RabbitMQConfig {
 
   /**
    * RabbitTemplate을 생성하여 반환
+   *
+   * ConnectionFactory 로 연결 후 실제 작업을 위한 Template
    *
    * @param connectionFactory RabbitMQ와의 연결을 위한 ConnectionFactory 객체
    * @return RabbitTemplate 객체

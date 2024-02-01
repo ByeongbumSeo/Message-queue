@@ -44,6 +44,9 @@ public class ActiveMQConfig {
   /**
    * ActiveMQ 연결을 위한 ActiveMQConnectionFactory 빈을 생성하여 반환
    *
+   * activeMQ 는  61616 포트로 구동 중이다.
+   * Spring application 에서 해당 서버로 접근해야 한다. ActiveConnectionFactory 로 연결
+   *
    * @return ActiveMQConnectionFactory 객체
    */
   @Bean
@@ -57,6 +60,9 @@ public class ActiveMQConfig {
 
   /**
    * JmsTemplate을 생성하여 반환
+   *
+   * ActiveMQ는 JMS를 기반으로 동작.
+   * JmsTemplate 은 연결 후 실제 작업을 하기 위한 template
    *
    * @return JmsTemplate 객체
    */
@@ -74,6 +80,8 @@ public class ActiveMQConfig {
   /**
    * JmsListenerContainerFactory을 위한 빈을 생성
    *
+   * 메세지를 소비하는 Listener
+   *
    * @return JmsTemplate
    */
   @Bean
@@ -86,6 +94,9 @@ public class ActiveMQConfig {
 
   /**
    * MessageConverter을 위한 빈을 생성
+   *
+   * 다른 서버간의 통신을 위한 메세지 변환(직렬화)이 필요.
+   * MappingJackson2MessageConverter는 Spring에서 지원
    *
    * @return MessageConverter
    */

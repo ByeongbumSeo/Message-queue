@@ -13,6 +13,11 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 @Service
 public class MessageService {
+  /**
+   * Queue 로 메세지를 발행할 때에는 RabbitTemplate 의 ConvertAndSend 메소드를 사용하고
+   * Queue 에서 메세지를 구독할때는 @RabbitListener 을 사용
+   *
+   **/
 
   @Value("${rabbitmq.exchange.name}")
   private String exchangeName;
@@ -24,6 +29,9 @@ public class MessageService {
 
   /**
    * Queue로 메시지를 발행
+   *
+   * 이렇게 메세지를 발행하면 Direct Exchange 전략에 따라 주어진 Routing Key 로 바인딩된 Queue 로 메세지가 들어가게 되고,
+   * 이는 해당 Queue 을 구독하는 Consumer(어플리케이션) 으로 들어가게 된다.
    *
    * @param messageDto 발행할 메시지의 DTO 객체
    */
