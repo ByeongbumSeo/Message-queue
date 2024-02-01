@@ -1,0 +1,8 @@
+### 메시지 발행
+POST http://localhost:9091/send/message
+Content-Type: application/json
+
+{
+    "title" : "Message Title Test",
+    "content" : "Message Content Test"
+}

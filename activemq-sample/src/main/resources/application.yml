@@ -1,0 +1,19 @@
+# Service Post 설정
+server:
+  port: 9091
+
+# Log Level 설정
+logging:
+  level:
+    root: info
+
+# ActiveMQ 연결 정보
+spring:
+  activemq:
+    broker-url: tcp://localhost:61616
+    user: admin
+    password: admin
+
+# Activemq queue 정보
+activemq:
+  queue.name: sample-queue
